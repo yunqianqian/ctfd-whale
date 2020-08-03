@@ -1,0 +1,5 @@
+2020-07-30 03:33:50,048 - utils.util - ERROR - Fail to add image, exception: 'list' object is not callable
+2020-07-30 03:34:59,397 - utils.util - ERROR - Fail to add image, exception: global name 'name' is not defined
+2020-07-30 03:36:06,085 - utils.util - ERROR - Fail to add image, exception: 'list' object is not callable
+2020-07-30 03:48:17,985 - utils.util - ERROR - Fail to add image, exception: [Errno 2] No such file or directory: u'/home/busybox-2.tar'
+2020-07-30 22:31:57,961 - utils.util - ERROR - Fail to add image, exception: [Errno 2] No such file or directory: u'/home/busybox-2.tar'

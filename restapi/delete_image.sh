@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -X DELETE -d '{"id":"7f1800c2-c069-4303-a804-9640285da97f" }' "http://192.168.159.130:5000/image"
