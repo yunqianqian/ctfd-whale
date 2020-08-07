@@ -8,14 +8,13 @@ from flask_apscheduler import APScheduler
 from api.frp_utils import FrpUtils
 
 def auto_clean_container():
-    print("hello, I'm a scheduler:")
-    # with app.app_context():
-    #     FrpUtils.update_frp_redirect()
-
+    with app.app_context():
+        FrpUtils.update_frp_redirect()
 scheduler = APScheduler()
 scheduler.init_app(app)
 scheduler.start()
 manager = Manager(app)
+
 # 1. 要使用flask_migrate，必须绑定app和db
 migrate = Migrate(app,db)
 # 2. 把MigrateCommand命令添加到manager中

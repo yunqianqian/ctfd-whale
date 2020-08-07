@@ -17,10 +17,16 @@ class DockerUtils(object):
                 "Fail to initialize Docker client, exception: {}".format(e))
 
     # TODO: add network, dns, cpu, memrory limit
-    def add_service(self, user_id, image_id, container_name, flag):
-
+    def add_service(self, user_id, image_name, container_name, flag, cpu, memory):
         try:
-            self.client.services.create(image=image_id, name=container_name, env={'FLAG': flag})
+            self.client.services.create(image = image_name, name=container_name, env = {'FLAG': flag},
+                                        resources = docker.types.Resources(
+                                            mem_limit = util.convert_readable_text(memory),
+                                            cpu_limit = int(cpu * 1e9)),
+                                        networks = ["ctfd_frp_containers"],
+                                        labels = {container_name: user_id},
+                                        container_labels = {container_name: user_id},
+                                        hostname = container_name)
             add_service_res = constant.SUCESS_RETURN_VALUE
         except Exception as e:
             logger.error(
@@ -28,8 +34,9 @@ class DockerUtils(object):
             add_service_res = constant.ERROR_RETURN_VALUE
         return add_service_res
 
-    def del_service(self,container_id):
-        services = self.client.services.list(filters={'id': container_id})
+    def del_service(self,container_name):
+        services = self.client.services.list(filters={'label': container_name})
+        #是否存在容器已经删掉，数据库数据还存在的情况？
         for s in services:
             s.remove()
 
@@ -39,8 +46,12 @@ class DockerUtils(object):
         for item in list_service:
             result[item.short_id] = item.name
         return result
-    def crete_network(self):
-        pass
+
+    def get_container(self,container_name):
+        res = self.client.containers.list(filters={'label': container_name})
+        if res:
+            return True
+        return False
 
 
     def del_network(self):

@@ -3,3 +3,7 @@
 2020-07-30 03:36:06,085 - utils.util - ERROR - Fail to add image, exception: 'list' object is not callable
 2020-07-30 03:48:17,985 - utils.util - ERROR - Fail to add image, exception: [Errno 2] No such file or directory: u'/home/busybox-2.tar'
 2020-07-30 22:31:57,961 - utils.util - ERROR - Fail to add image, exception: [Errno 2] No such file or directory: u'/home/busybox-2.tar'
+2020-08-03 06:02:29,863 - utils.util - ERROR - Fail to startup container, exception: global name 'dynamic_docker_challenge' is not defined
+2020-08-03 06:04:14,145 - utils.util - ERROR - Fail to startup container, exception: global name 'name' is not defined
+2020-08-05 05:02:12,082 - utils.util - ERROR - Fail to startup container, exception: 403 Client Error: Forbidden ("The network frpc_containers cannot be used with services. Only networks scoped to the swarm can be used, such as those created with the overlay driver.")
+2020-08-05 05:06:09,489 - utils.util - ERROR - Fail to startup container, exception: 403 Client Error: Forbidden ("The network frpc_containers cannot be used with services. Only networks scoped to the swarm can be used, such as those created with the overlay driver.")

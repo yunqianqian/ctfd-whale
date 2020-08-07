@@ -1,0 +1,4 @@
+1. 一个image对应一个challenge
+2. 设置每个container重置的次数
+3. 把配置参数填入数据库
+

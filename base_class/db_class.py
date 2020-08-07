@@ -10,9 +10,9 @@ class Image(db.Model):
     __tablename__ = "image"
 
 class Challenge(db.Model):
-    id = db.Column('CONID',db.String(64), primary_key=True)
-    memory_limit = db.Column('MEMORY',db.String(32),nullable=True,default="128m")
-    cpu_limit = db.Column('CPU',db.String(16),nullable=True,default="0.5")
+    id = db.Column('ID',db.String(64), primary_key=True)
+    memory = db.Column('MEMORY',db.String(32),nullable=True,default="128m")
+    cpu = db.Column('CPU', db.Float, default=0.5)
     image_id = db.Column('IMAGEID',ForeignKey('image.IMAGEID'),unique=False,nullable=False)
     redirect_type = db.Column('TYPE',db.String(32),nullable=True,default="direct")
     port = db.Column('PORT',db.String(64),nullable=True)
@@ -20,11 +20,12 @@ class Challenge(db.Model):
     __tablename__ = "challenge"
 
 class Container(db.Model):
-    id = db.Column('CONID',db.String(64), primary_key=True)
+    id = db.Column('ID',db.String(64), primary_key=True)
     image_id = db.Column('IMAGEID',ForeignKey('image.IMAGEID'),unique=False,nullable=False)
     user_id = db.Column('USERID',db.String(17), nullable=False)
     name = db.Column('CONNAME',db.String(128), nullable=False)
     flag = db.Column('FLAG',db.String(256), nullable=True)
+    reset_num = db.Column('RESETNUM',db.Integer(), default=0)
     port = db.Column('PORT',db.String(64),nullable=True)
     create_time = db.Column('CREATETIME',db.DateTime, nullable=False, default=datetime.datetime.now())
     status = db.Column('STATUS', db.String(1), nullable=False,default = '0')
